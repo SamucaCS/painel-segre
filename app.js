@@ -124,7 +124,6 @@
     return raw ? JSON.parse(raw) : null;
   }
 
-  // ---------- CONTEÚDOS (MATRÍCULAS) ----------
   const TOPICS = {
     foraRede: {
       badge: "Matrículas",
@@ -140,7 +139,7 @@
           <p>2) <strong>On-line:</strong> realizando uma pré-inscrição conforme tutorial abaixo.</p>
           <p><strong>Tutorial Pré-Inscrição On-line:</strong> <a href="https://midiasstoragesec.blob.core.windows.net/001/2023/08/tutorial-pr-inscrio-online_2024_com-escolha-de-if.pdf" target="_blank" rel="noopener">Clique aqui</a></p>
         </div>
-      `,
+      `
     },
 
     transfEndereco: {
@@ -173,7 +172,7 @@
 
           <p>2) <strong>Presencialmente:</strong> em qualquer unidade escolar ou postos do Poupatempo.</p>
         </div>
-      `,
+      `
     },
 
     transfIntencao: {
@@ -210,56 +209,110 @@
           <p><strong>Importante:</strong> Ao fim do semestre letivo, os responsáveis, estudantes maiores de idade ou emancipados deverão confirmar a manutenção do interesse
           registrado na inscrição de intenção de transferência e a falta dessa confirmação acarretará o cancelamento da inscrição.</p>
         </div>
-      `,
+      `
     },
 
     noturno: {
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE VAGA NO PERÍODO NOTURNO",
       html: `
-        <p><a href="#" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta do EM Noturno na sua Região (link clicável)</p>
-        <p>Os responsáveis podem realizar uma inscrição por <strong>INTENÇÃO</strong> (presencialmente ou online). Saiba como realizar a inscrição no assunto “<strong>INFORMAÇÕES SOBRE INSCRIÇÃO POR INTENÇÃO</strong>”.</p>
+        <p>
+          Os responsáveis podem realizar uma inscrição por <strong>INTENÇÃO</strong> (presencialmente ou online), atendidos os critérios abaixo especificados.
+          Saiba como realizar a inscrição no assunto “<strong>INFORMAÇÕES SOBRE INSCRIÇÃO POR INTENÇÃO</strong>”.
+        </p>
         <div class="callout">
-          <p><strong>RESOLUÇÃO SEDUC Nº 115, DE 13 DE AGOSTO DE 2025 — Artigo 16</strong></p>
-          <p>Texto da resolução (se quiser, eu colo completo aqui no painel também).</p>
+          <p><strong>RESOLUÇÃO SEDUC Nº 115, DE 13 DE AGOSTO DE 2025</strong></p>
+          <p><strong>Artigo 16</strong> O atendimento no período noturno para estudantes do Ensino Médio destina-se, prioritariamente, aos estudantes trabalhadores, observado o disposto no Decreto Federal nº 6.481, de 12 de junho de 2008, e a efetivação da matrícula, manualmente, dar-se-á mediante os seguintes critérios:</p>
+
+          <p><strong>I</strong> – Para estudantes de quatorze anos de idade completos a dezesseis anos de idade incompletos, na condição de Jovem Aprendiz, é necessária a apresentação de contrato formal de Jovem Aprendiz, nos termos da Lei n° 10.097/2000, contendo:</p>
+          <p>a) Dados do empregador; b) Dados do responsável; c) Dados do estudante; d) Horário de exercício do trabalho e carga horária.</p>
+
+          <p><strong>II</strong> – Para estudantes com idade a partir de dezesseis anos, na condição de empregado com registro em Carteira de Trabalho e Previdência Social – CTPS, com apresentação da cópia da CTPS;</p>
+          <p><strong>III</strong> – Declaração, emitida nos últimos trinta (30) dias, pelo empregador, identificando o local, horário de exercício do trabalho e carga horária;</p>
+          <p><strong>IV</strong> – Para estudantes com idade a partir de dezesseis anos, na condição de estagiário, com apresentação de termo de compromisso ou declaração de vínculo emitida nos últimos trinta (30) dias pela entidade ou empresa com a qual possui vínculo, identificando local, horário de exercício das atividades e carga horária;</p>
+          <p><strong>V</strong> – Para estudantes com idade a partir de quatorze anos, na condição de atleta, com apresentação de declaração emitida no ano corrente pelo clube ou entidade com a qual possui vínculo, identificando local e horário de exercício das atividades e carga horária;</p>
+          <p><strong>VI</strong> – Para estudantes com idade a partir de dezesseis anos, em regime familiar de trabalho, conforme legislação, com assinatura de termo de ciência dos responsáveis, emitida no ano corrente;</p>
+          <p><strong>VII</strong> – Para estudantes com autorização judicial de exercício de atividades artísticas, circenses, teatrais ou outras, mediante apresentação da decisão judicial que permita o exercício;</p>
+          <p><strong>VIII</strong> – Para estudantes com idade a partir de dezesseis anos, na condição de trabalhador autônomo, mediante apresentação de declaração emitida nos últimos trinta (30) dias, firmada pelo próprio estudante ou responsável legal, contendo a descrição da atividade desenvolvida, horário e carga horária, com a devida ciência.</p>
+
+          <p><strong>§1º</strong> – Em conformidade com o Estatuto da Criança e do Adolescente – ECA (Lei nº 8.069/1990), em especial nos artigos 4º, 53 e 60, e com o Decreto Federal nº 6.481, de 12 de junho de 2008, é vedado o trabalho perigoso, insalubre e noturno ao adolescente, inclusive na condição de aprendiz ou trabalhador autônomo. Identificada qualquer situação de risco ou violação de direitos, a Unidade Escolar ou a Unidade Regional de Ensino deverá acionar a rede de proteção à criança e ao adolescente.</p>
+
+          <p><strong>§2º</strong> – A comprovação do exercício das atividades/condições que constam neste artigo, a fim de garantir a vaga no período noturno, deverá ser atualizada semestralmente.</p>
+
+          <p><strong>§3º</strong> – Os casos omissos ou não tratados neste artigo são passíveis de análise e autorização da Unidade Regional de Ensino, mediante solicitação de próprio punho dos responsáveis legais ou cadastrado do estudante.</p>
+
+          <p><strong>§4º</strong> – A mera apresentação da documentação que comprova a necessidade de atendimento no período noturno não garante o atendimento, sendo que a disponibilização da vaga ocorrerá mediante ociosidade de vagas e análise das condições apresentadas.</p>
         </div>
-      `,
+      `
     },
 
     profissional: {
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE OFERTA DE EDUCAÇÃO PROFISSIONAL",
       html: `
-        <p><a href="#" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta do EM – Educação Profissional na sua Região (link clicável)</p>
-        <p>Nas escolas estaduais do Estado de São Paulo, a oferta da Educação Profissional ocorre a partir da <strong>2ª Série do Ensino Médio</strong>...</p>
-      `,
+        <p>
+          Nas escolas estaduais do Estado de São Paulo, a oferta da Educação Profissional ocorre a partir da <strong>2ª Série do Ensino Médio</strong>,
+          mediante manifestação de interesse do estudante e responsável na chamada pública no ano imediatamente anterior e está condicionada às vagas existentes no curso e escola escolhidos,
+          distância da residência e <strong>IAE (Índice de Alocação do Estudante)</strong>.
+        </p>
+      `
     },
 
     eja: {
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE A EDUCAÇÃO DE JOVENS E ADULTOS",
       html: `
-        <p><a href="#" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta da Educação de Jovens e Adultos na sua Região (link clicável)</p>
         <div class="callout">
-          <p>✓ Regras de idade e ingresso (texto mantido).</p>
+          <p>✓ Para ingresso no Ensino Fundamental na modalidade EJA, de curso presencial, mantido por escola pública estadual, possuir <strong>15 (quinze) anos</strong> de idade completos no primeiro dia do ano letivo subsequente ou na data do início da sua matrícula, no decorrer do ano letivo;</p>
+          <p>✓ Para ingresso no Ensino Médio na modalidade EJA, de curso presencial, mantido por escola pública estadual, possuir <strong>18 (dezoito) anos</strong> de idade completos no primeiro dia do ano letivo subsequente ou na data do início da sua matrícula, no decorrer do ano letivo;</p>
+          <p>✓ Para ingresso na EJA, de curso de presença flexível, ofertado por escola pública estadual no âmbito dos Centros Estaduais de Educação de Jovens e Adultos – CEEJA e suas escolas vinculadas, possuir <strong>18 (dezoito) anos</strong> de idade completos no primeiro dia do ano letivo subsequente ou na data do início da sua matrícula, no decorrer do ano letivo.</p>
         </div>
-        <p>Para saber como realizar a inscrição, acesse o assunto <strong>INFORMAÇÕES FORA DA REDE/ TRANSFERÊNCIA OU INTENÇÃO</strong>.</p>
-      `,
+
+        <p>
+          Para saber como realizar a inscrição, acesse o assunto <strong>INFORMAÇÕES FORA DA REDE/ TRANSFERÊNCIA OU INTENÇÃO</strong>.
+        </p>
+      `
     },
 
     irmaos: {
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE O ATENDIMENTO DE IRMÃOS EM MESMA ETAPA DE ENSINO",
-      html: `<p>Texto mantido (se quiser, colo completo aqui também).</p>`,
+      html: `
+        <p>
+          Para garantir o acesso vagas no mesmo estabelecimento a irmãos que frequentem a mesma etapa ou ciclo de ensino da educação básica é necessário que os responsáveis informem
+          no momento da inscrição para vaga na escola pública ou por transferência, a ocorrência de irmãos para o sistema SED – Secretaria Escolar Digital faça a alocação de vaga em uma mesma escola.
+        </p>
+
+        <p>
+          Nos casos em que essa alocação ocorrer em escolas diferentes, os responsáveis podem comunicar a escola de alocação, realizando nova inscrição para ajuste.
+          As matrículas serão alocadas na escola que consiga atender todos os irmãos, coincidindo ou não com a escola de preferência dos responsáveis, respeitados os critérios de distância estabelecidos na legislação vigente.
+        </p>
+
+        <p>
+          Quando os irmãos já estão atendidos em uma mesma escola e, por INTENÇÃO (preferência de escola), os responsáveis optarem por uma troca para outra escola,
+          há uma descaracterização da prioridade no atendimento. Essas novas inscrições serão atendidas pelo sistema à medida em que surgem vagas na série/ escola (s) escolhida,
+          obedecendo a ordem cronológica de inscritos. Enquanto aguarda a vaga, os alunos deverão frequentar a escola de origem.
+        </p>
+      `
     },
 
     transporte: {
       badge: "Matrículas",
       title: "INFORMAÇÃO SOBRE TRANSPORTE ESCOLAR REGULAR",
-      html: `<p>Texto mantido (se quiser, colo completo aqui também).</p>`,
-    },
+      html: `
+        <p>
+          O transporte escolar gratuito é concedido para estudantes que não possuem escola pública com atendimento do seu ano/ série até 2,0 Km do seu endereço residencial.
+        </p>
+        <p>
+          O atendimento do estudante inscrito por Intenção de Transferência, descaracteriza o direito ao transporte escolar, devendo a escola informar seus responsáveis quando da realização dessa inscrição/atendimento.
+          (RESOLUÇÃO SEDUC Nº 115, DE 13 DE AGOSTO DE 2025, artigo 28).
+        </p>
+        <p>
+          O transporte especial, voltado para estudantes da Educação Especial deve ser solicitado diretamente na unidade escolar.
+        </p>
+      `
+    }
   };
-
   // ---------- DROPDOWN MATRÍCULAS ----------
   function toggleMenu(open) {
     if (!menuMatriculas || !btnMatriculas) return;
