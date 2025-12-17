@@ -1,10 +1,7 @@
 (() => {
   const $ = (sel, root = document) => root.querySelector(sel);
-
-  // ---------- ELEMENTOS ----------
   const btnFale = $("#btnFaleConosco");
   const btnAcompanhar = $("#btnAcompanhar");
-
   const modalFale = $("#modalFale");
   const btnCloseFale = $("#btnCloseFale");
   const formFale = $("#formFale");
@@ -12,12 +9,9 @@
   const btnAbrirEmail = $("#btnAbrirEmail");
   const btnFecharResultado = $("#btnFecharResultado");
   const btnIrAcompanhar = $("#btnIrAcompanhar");
-
   const resProtocolo = $("#resProtocolo");
   const resPrazo = $("#resPrazo");
   const resStatus = $("#resStatus");
-
-  // VIDA ESCOLAR
   const btnVidaEscolar = $("#btnVidaEscolar");
   const modalVida = $("#modalVida");
   const btnCloseVida = $("#btnCloseVida");
@@ -27,20 +21,16 @@
   const btnIrAcompanharVida = $("#btnIrAcompanharVida");
   const btnFecharVidaResultado = $("#btnFecharVidaResultado");
   const btnAbrirEmailVida = $("#btnAbrirEmailVida");
-
   const resVidaProtocolo = $("#resVidaProtocolo");
   const resVidaPrazo = $("#resVidaPrazo");
   const resVidaStatus = $("#resVidaStatus");
   const resVidaAnexos = $("#resVidaAnexos");
-
-  // ACOMPANHAR
   const modalAcompanhar = $("#modalAcompanhar");
   const btnCloseAcompanhar = $("#btnCloseAcompanhar");
   const inpProtocolo = $("#inpProtocolo");
   const btnBuscarProtocolo = $("#btnBuscarProtocolo");
   const trackResult = $("#trackResult");
   const trackEmpty = $("#trackEmpty");
-
   const trkProtocolo = $("#trkProtocolo");
   const trkSolicitante = $("#trkSolicitante");
   const trkEstudante = $("#trkEstudante");
@@ -48,8 +38,6 @@
   const trkStatus = $("#trkStatus");
   const trkPrazo = $("#trkPrazo");
   const trkData = $("#trkData");
-
-  // MATRÍCULAS
   const btnMatriculas = $("#btnMatriculas");
   const menuMatriculas = $("#menuMatriculas");
   const topicTitle = $("#topicTitle");
@@ -70,7 +58,6 @@
     return out;
   }
 
-  // ✅ protocolos sem traços na data (AAAAMMDD)
   function genProtocolSEGRE() {
     return `SEGRE-${ymdCompact()}-${randTail(6)}`;
   }
@@ -110,7 +97,6 @@
     document.body.style.overflow = "";
   }
 
-  // storage (local)
   function storageKey(protocol) {
     return `segre_protocol_${protocol}`;
   }
@@ -216,6 +202,7 @@
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE VAGA NO PERÍODO NOTURNO",
       html: `
+      <p><a href="https://desuzano.educacao.sp.gov.br/estaduais/" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta do EM Noturno na sua Região</p>
         <p>
           Os responsáveis podem realizar uma inscrição por <strong>INTENÇÃO</strong> (presencialmente ou online), atendidos os critérios abaixo especificados.
           Saiba como realizar a inscrição no assunto “<strong>INFORMAÇÕES SOBRE INSCRIÇÃO POR INTENÇÃO</strong>”.
@@ -250,6 +237,7 @@
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE OFERTA DE EDUCAÇÃO PROFISSIONAL",
       html: `
+          <p><a href="https://desuzano.educacao.sp.gov.br/estaduais/" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta do EM – Educação Profissional na sua Região</p>
         <p>
           Nas escolas estaduais do Estado de São Paulo, a oferta da Educação Profissional ocorre a partir da <strong>2ª Série do Ensino Médio</strong>,
           mediante manifestação de interesse do estudante e responsável na chamada pública no ano imediatamente anterior e está condicionada às vagas existentes no curso e escola escolhidos,
@@ -262,6 +250,7 @@
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE A EDUCAÇÃO DE JOVENS E ADULTOS",
       html: `
+       <p><a href= "https://desuzano.educacao.sp.gov.br/estaduais/" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta da Educação de Jovens e Adultos na sua Região (link clicável)</p>
         <div class="callout">
           <p>✓ Para ingresso no Ensino Fundamental na modalidade EJA, de curso presencial, mantido por escola pública estadual, possuir <strong>15 (quinze) anos</strong> de idade completos no primeiro dia do ano letivo subsequente ou na data do início da sua matrícula, no decorrer do ano letivo;</p>
           <p>✓ Para ingresso no Ensino Médio na modalidade EJA, de curso presencial, mantido por escola pública estadual, possuir <strong>18 (dezoito) anos</strong> de idade completos no primeiro dia do ano letivo subsequente ou na data do início da sua matrícula, no decorrer do ano letivo;</p>
@@ -278,6 +267,7 @@
       badge: "Matrículas",
       title: "INFORMAÇÕES SOBRE O ATENDIMENTO DE IRMÃOS EM MESMA ETAPA DE ENSINO",
       html: `
+      <p><a href="https://desuzano.educacao.sp.gov.br/estaduais/" target="_blank" rel="noopener">Consulte aqui</a> relação de escolas com oferta da Educação de Jovens e Adultos na sua Região</p>
         <p>
           Para garantir o acesso vagas no mesmo estabelecimento a irmãos que frequentem a mesma etapa ou ciclo de ensino da educação básica é necessário que os responsáveis informem
           no momento da inscrição para vaga na escola pública ou por transferência, a ocorrência de irmãos para o sistema SED – Secretaria Escolar Digital faça a alocação de vaga em uma mesma escola.
@@ -313,7 +303,6 @@
       `
     }
   };
-  // ---------- DROPDOWN MATRÍCULAS ----------
   function toggleMenu(open) {
     if (!menuMatriculas || !btnMatriculas) return;
     const willOpen =
@@ -345,8 +334,6 @@
       $("#topicCard")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
-
-  // ---------- VIDA ESCOLAR (SEÇÃO) ----------
   btnVidaEscolar?.addEventListener("click", () => {
     topicBadge.textContent = "Vida Escolar";
     topicTitle.textContent = "Seção de Vida Escolar";
@@ -392,7 +379,6 @@
 
   btnFecharVidaResultado?.addEventListener("click", () => closeModal(modalVida));
 
-  // ---------- MODAL FALE CONOSCO (SAMAT) ----------
   btnFale?.addEventListener("click", () => {
     formFale.hidden = false;
     resultBox.hidden = true;
@@ -412,8 +398,6 @@
   });
 
   btnFecharResultado?.addEventListener("click", () => closeModal(modalFale));
-
-  // ---------- SUBMIT SAMAT ----------
   formFale?.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -472,11 +456,9 @@ Data de abertura: ${prettyDate(new Date(record.createdAt))}
 
     inpProtocolo.value = record.protocol;
 
-    // ✅ abre automaticamente
     window.location.href = mailto;
   });
 
-  // ---------- SUBMIT SEVESC ----------
   formVida?.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -543,12 +525,8 @@ IMPORTANTE: Anexar os PDFs selecionados antes de enviar este e-mail.
     resultVida.hidden = false;
 
     inpProtocolo.value = record.protocol;
-
-    // ✅ abre automaticamente
     window.location.href = mailto;
   });
-
-  // ---------- MODAL ACOMPANHAR ----------
   btnAcompanhar?.addEventListener("click", () => {
     openModal(modalAcompanhar);
     inpProtocolo?.focus();
