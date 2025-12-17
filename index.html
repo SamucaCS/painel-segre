@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informações SEGRE</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+    <div class="page">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="logo-dot"></div>
+                <div>
+                    <h1>Informações SEGRE</h1>
+                    <p class="subtitle">Matrículas, orientações e solicitações via protocolo</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn ghost" id="btnAcompanhar">Acompanhar protocolo</button>
+                <button class="btn primary" id="btnFaleConosco">Fale Conosco</button>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="hero card">
+                <div class="hero-text">
+                    <h2>Central de informações</h2>
+                    <p>
+                        Selecione um tema na <strong>Seção de Matrículas</strong> para ver orientações completas.
+                        Se precisar abrir uma solicitação, use <strong>Fale Conosco</strong> para gerar um protocolo.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <div class="dropdown">
+                            <button class="btn" id="btnMatriculas" aria-expanded="false" aria-controls="menuMatriculas">
+                                Seção de Matrículas
+                                <span class="chev">▾</span>
+                            </button>
+
+                            <div class="menu" id="menuMatriculas" role="menu" aria-hidden="true">
+                                <button class="menu-item" data-topic="foraRede" role="menuitem">
+                                    INFORMAÇÕES SOBRE INSCRIÇÃO DE ESTUDANTE FORA DA REDE PÚBLICA
+                                </button>
+                                <button class="menu-item" data-topic="transfEndereco" role="menuitem">
+                                    INFORMAÇÕES SOBRE TRANSFERÊNCIA ESCOLAR – COM ALTERAÇÃO DE ENDEREÇO
+                                </button>
+                                <button class="menu-item" data-topic="transfIntencao" role="menuitem">
+                                    INFORMAÇÕES SOBRE TRANSFERÊNCIA ESCOLAR – POR INTENÇÃO (PREFERÊNCIA DE ESCOLA)
+                                </button>
+                                <button class="menu-item" data-topic="noturno" role="menuitem">
+                                    INFORMAÇÕES SOBRE VAGA NO PERÍODO NOTURNO
+                                </button>
+                                <button class="menu-item" data-topic="profissional" role="menuitem">
+                                    INFORMAÇÕES SOBRE OFERTA DE EDUCAÇÃO PROFISSIONAL
+                                </button>
+                                <button class="menu-item" data-topic="eja" role="menuitem">
+                                    INFORMAÇÕES SOBRE A EDUCAÇÃO DE JOVENS E ADULTOS
+                                </button>
+                                <button class="menu-item" data-topic="irmaos" role="menuitem">
+                                    INFORMAÇÕES SOBRE O ATENDIMENTO DE IRMÃOS EM MESMA ETAPA DE ENSINO
+                                </button>
+                                <button class="menu-item" data-topic="transporte" role="menuitem">
+                                    INFORMAÇÃO SOBRE TRANSPORTE ESCOLAR REGULAR
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="btn" id="btnVidaEscolar">
+                            Seção de Vida Escolar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-side">
+                    <div class="pill">
+                        <span class="pill-title">Atalho</span>
+                        <span class="pill-text">Acompanhe seu protocolo a qualquer momento.</span>
+                    </div>
+                    <div class="mini card-soft">
+                        <h3>Como funciona</h3>
+                        <ol>
+                            <li>Preencha o <strong>Fale Conosco</strong> ou <strong>Vida Escolar</strong>.</li>
+                            <li>Você recebe um <strong>protocolo</strong> e prazo.</li>
+                            <li>Use <strong>Acompanhar protocolo</strong> para ver o status.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card" id="topicCard">
+                <div class="topic-head">
+                    <h2 id="topicTitle">Selecione um tema</h2>
+                    <span class="badge" id="topicBadge">Matrículas</span>
+                </div>
+
+                <div class="topic-body" id="topicBody">
+                    <p class="muted">
+                        Clique em <strong>Seção de Matrículas</strong> e escolha um assunto para carregar as informações
+                        aqui.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <span>SEGRE • Diretoria de Ensino – Região de Suzano</span>
+            <span class="muted">Versão: painel informativo</span>
+        </footer>
+    </div>
+
+    <!-- MODAL: FALE CONOSCO (SEGRE/SAMAT) -->
+    <div class="modal-overlay" id="modalFale" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalFaleTitle">
+            <div class="modal-header">
+                <h3 id="modalFaleTitle">Fale Conosco</h3>
+                <button class="icon-btn" id="btnCloseFale" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="formFale">
+                    <div class="grid">
+                        <div class="field">
+                            <label>Nome completo do solicitante</label>
+                            <input type="text" name="solicitante" required />
+                        </div>
+
+                        <div class="field">
+                            <label>E-mail</label>
+                            <input type="email" name="email" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Telefone</label>
+                            <input type="tel" name="telefone" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Nome completo do estudante</label>
+                            <input type="text" name="estudante" required />
+                        </div>
+
+                        <div class="field">
+                            <label>RA</label>
+                            <input type="text" name="ra" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Filiação</label>
+                            <input type="text" name="filiacao" required />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Relate a situação de forma breve</label>
+                        <textarea name="relato" rows="4" required></textarea>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Informações do protocolo</strong>
+                        <p class="muted">
+                            Ao enviar, será gerado um <strong>número de protocolo</strong> e um <strong>prazo para
+                                retorno</strong>.
+                            Você poderá acompanhar o andamento na tela de acompanhamento.
+                        </p>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn ghost" id="btnIrAcompanhar">Ir para acompanhamento</button>
+                        <button type="submit" class="btn primary">Enviar solicitação</button>
+                    </div>
+                </form>
+
+                <div class="result" id="resultBox" hidden>
+                    <h4>Solicitação registrada</h4>
+                    <p>
+                        Protocolo: <strong id="resProtocolo">—</strong><br />
+                        Prazo para retorno: <strong id="resPrazo">—</strong><br />
+                        Status: <strong id="resStatus">Recebido</strong>
+                    </p>
+
+                    <div class="result-actions">
+                        <a class="btn" id="btnAbrirEmail" href="#" target="_blank" rel="noopener">Abrir e-mail para
+                            envio</a>
+                        <button class="btn ghost" id="btnFecharResultado">Fechar</button>
+                    </div>
+
+                    <p class="muted small">
+                        Observação: este painel salva o protocolo no seu navegador para permitir o acompanhamento.
+                        Para envio por e-mail, será aberto um rascunho no seu aplicativo de e-mail.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: VIDA ESCOLAR (SEVESC) -->
+    <div class="modal-overlay" id="modalVida" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalVidaTitle">
+            <div class="modal-header">
+                <h3 id="modalVidaTitle">Seção de Vida Escolar</h3>
+                <button class="icon-btn" id="btnCloseVida" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="vida-intro">
+                    <a href="#" class="link-cta" id="btnCliqueAquiVida">Clique aqui para ter o seu documento de vida
+                        escolar</a>
+                    <p class="muted" style="margin-top:10px;">
+                        Olá, bem-vindo(a) à Seção de Vida Escolar. Aqui você pode solicitar sua documentação de vida
+                        escolar,
+                        diploma/certificação e outros.
+                    </p>
+                </div>
+
+                <form id="formVida" class="mt12">
+                    <div class="grid">
+                        <div class="field">
+                            <label>E-mail</label>
+                            <input type="email" name="email" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Nome completo</label>
+                            <input type="text" name="nome" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Data de nascimento</label>
+                            <input type="date" name="nascimento" required />
+                        </div>
+
+                        <div class="field">
+                            <label>RG</label>
+                            <input type="text" name="rg" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Telefone</label>
+                            <input type="tel" name="telefone" required />
+                        </div>
+
+                        <div class="field">
+                            <label>Nome da mãe</label>
+                            <input type="text" name="mae" required />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Observações</label>
+                        <textarea name="obs" rows="4" placeholder="Descreva o que precisa solicitar..."
+                            required></textarea>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Informações do protocolo</strong>
+                        <p class="muted">
+                            Ao enviar, será gerado um <strong>protocolo SEVESC</strong> e um <strong>prazo para
+                                retorno</strong>.
+                            Você poderá acompanhar o andamento na tela de acompanhamento.
+                        </p>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn ghost" id="btnIrAcompanharVida">Ir para acompanhamento</button>
+                        <button type="submit" class="btn primary">Enviar solicitação</button>
+                    </div>
+                </form>
+
+                <div class="result" id="resultVida" hidden>
+                    <h4>Solicitação registrada</h4>
+                    <p>
+                        Protocolo: <strong id="resVidaProtocolo">—</strong><br />
+                        Prazo para retorno: <strong id="resVidaPrazo">—</strong><br />
+                        Status: <strong id="resVidaStatus">Recebido</strong><br />
+                        Anexos selecionados: <strong id="resVidaAnexos">—</strong>
+                    </p>
+
+                    <div class="result-actions">
+                        <a class="btn" id="btnAbrirEmailVida" href="#" target="_blank" rel="noopener">Abrir e-mail para
+                            envio</a>
+                        <button class="btn ghost" id="btnFecharVidaResultado">Fechar</button>
+                    </div>
+
+                    <p class="muted small">
+                        Lembrete: ao abrir o e-mail, anexe os PDFs selecionados antes de enviar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: ACOMPANHAR PROTOCOLO -->
+    <div class="modal-overlay" id="modalAcompanhar" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalAcompanharTitle">
+            <div class="modal-header">
+                <h3 id="modalAcompanharTitle">Acompanhar protocolo</h3>
+                <button class="icon-btn" id="btnCloseAcompanhar" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="field">
+                    <label>Digite o número do protocolo</label>
+                    <div class="row">
+                        <input type="text" id="inpProtocolo"
+                            placeholder="Ex.: SEGRE-20251216-AB12CD ou SEVESC-2025-12-16-AB12CD" />
+                        <button class="btn primary" id="btnBuscarProtocolo">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="track-result" id="trackResult" hidden>
+                    <div class="track-card">
+                        <div class="track-line">
+                            <span class="muted">Protocolo</span>
+                            <strong id="trkProtocolo">—</strong>
+                        </div>
+                        <div class="track-line">
+                            <span class="muted">Solicitante</span>
+                            <strong id="trkSolicitante">—</strong>
+                        </div>
+                        <div class="track-line">
+                            <span class="muted">Estudante</span>
+                            <strong id="trkEstudante">—</strong>
+                        </div>
+                        <div class="track-line">
+                            <span class="muted">RA</span>
+                            <strong id="trkRA">—</strong>
+                        </div>
+                        <div class="track-line">
+                            <span class="muted">Status</span>
+                            <strong id="trkStatus" class="status-pill">—</strong>
+                        </div>
+                        <div class="track-line">
+                            <span class="muted">Prazo para retorno</span>
+                            <strong id="trkPrazo">—</strong>
+                        </div>
+                        <div class="track-line">
+                            <span class="muted">Data de abertura</span>
+                            <strong id="trkData">—</strong>
+                        </div>
+                    </div>
+
+                    <p class="muted small">
+                        O status pode ser atualizado quando houver retorno/andamento pela equipe responsável.
+                    </p>
+                </div>
+
+                <div class="empty" id="trackEmpty">
+                    <p class="muted">
+                        Dica: depois de enviar pelo <strong>Fale Conosco</strong> ou <strong>Vida Escolar</strong>,
+                        copie o protocolo e cole aqui.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
